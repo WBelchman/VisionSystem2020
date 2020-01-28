@@ -166,15 +166,15 @@ def main(stop_message, sem):
 
     def connection(stop_message):
 
-    x = stop_message[0]
+        x = stop_message[0]
 
-    print("[*]Thread 2 queue:", x)
+        print("[*]Thread 2 queue:", x)
 
-    if x != 2:
-        print("[*]Thread 2 exiting")
-        cam.close()
-        sem.release()
-        sys.exit()
+        if x != 2:
+            print("[*]Thread 2 exiting")
+            cam.close()
+            sem.release()
+            sys.exit()
     
     cam = PiCamera()
     cam.resolution = (640, 480)
