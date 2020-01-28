@@ -14,7 +14,7 @@ sem = threading.BoundedSemaphore(value=1)
 stop_message = [0]
 
 def start_tape():
-    tape3.main(stop_message, sem)
+    tape.main(stop_message, sem)
 
 def start_ball():
     ball.main(stop_message, sem)
