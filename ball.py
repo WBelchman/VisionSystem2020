@@ -87,6 +87,18 @@ table = Table(1)
 
 grip = GripPipeline()
 
+def max_circle(contours):
+    max_rad = 0
+    for cnt in contours:
+        (x, y), radius = cv2.minEnclosingCircle(cnt)
+        
+        if radius > max_rad:
+            max_rad = radius
+            
+            output = [x, y, radius]
+            
+    return output
+
 
 def main(stop_message, sem):
 
@@ -119,7 +131,8 @@ def main(stop_message, sem):
             _, thresh = cv2.threshold(output, 127, 255, cv2.THRESH_BINARY)
             _, contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             
-            (x, y), radius = cv2.minEnclosingCircle(contours[0])
+            for cnt in contours:
+                x, y, radius = max_circle(contours)
             
             x = int(x)
             y = int(y)
