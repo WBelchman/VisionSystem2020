@@ -128,15 +128,15 @@ def main(stop_message, sem):
             cv2.circle(output, (x,y), radius, (0, 255, 0), 2)
             print("Ball found")
 
-#            table.updateNumber((sideX, sideY))
-#            table.updateNumber(width, key=1)
+            table.updateNumber((x, y), key=0)
+            table.updateNumber(radius, key=1)
         except Exception as e:
             print(e)
             print("--------------")
             print("Ball not found")
 
-#            table.updateNumber("B")
-#            table.updateNumber("B", key=1)
+            table.updateNumber("B", key=0)
+            table.updateNumber("B", key=1)
     
         cv2.imshow('Input', frame2)
         cv2.imshow('Output', output)
