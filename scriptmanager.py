@@ -3,7 +3,6 @@ import time
 
 import ball
 import tape
-import thread_example
 from networktables import NetworkTables as nt
 
 ip = "laptop"
