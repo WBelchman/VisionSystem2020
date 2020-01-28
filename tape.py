@@ -150,6 +150,7 @@ def find_boxes(contours):
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 from table import Table
+import sys
 
 
 table = Table(0)
@@ -161,7 +162,19 @@ g = GripPipeline()
 #Minimum area of a bounding box
 size_threshold = 1000
 
-def main():
+def main(stop_message, sem):
+
+    def connection(stop_message):
+
+    x = stop_message[0]
+
+    print("[*]Thread 2 queue:", x)
+
+    if x != 2:
+        print("[*]Thread 2 exiting")
+        cam.close()
+        sem.release()
+        sys.exit()
     
     cam = PiCamera()
     cam.resolution = (640, 480)
