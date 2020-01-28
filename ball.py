@@ -121,6 +121,9 @@ def main(stop_message, sem):
             
             (x, y), radius = cv2.minEnclosingCircle(contours[0])
             
+            x = int(x)
+            y = int(y)
+            radius = int(radius)
             
             print("Center: {}\nRadius: {}".format((x,y), radius))
 
