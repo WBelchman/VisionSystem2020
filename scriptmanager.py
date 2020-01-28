@@ -2,11 +2,11 @@ import threading
 import time
 
 import ball
-import tape3
+import tape
 import thread_example
 from networktables import NetworkTables as nt
 
-ip = "10.15.12.2"
+ip = "laptop"
 
 nt.initialize(server=ip)
 table = nt.getTable("chooser_data")

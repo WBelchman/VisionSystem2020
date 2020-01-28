@@ -122,7 +122,7 @@ def main(stop_message, sem):
             (x, y), radius = cv2.minEnclosingCircle(contours[0])
             
             
-            print("Center: {}\nRadius: {}".format((x,y), radius)
+            print("Center: {}\nRadius: {}".format((x,y), radius))
 
             cv2.circle(frame2, (x,y), radius, (0, 255, 0), 2)
             cv2.circle(output, (x,y), radius, (0, 255, 0), 2)

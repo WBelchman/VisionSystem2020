@@ -6,7 +6,7 @@ key_list = ["midpoint", "width"]
 class Table:
     
     def __init__(self, table_number):
-        nt.initialize(server='10.31.51.43')
+        nt.initialize(server="laptop")
         self.table = nt.getTable(table_list[table_number])
 
     def updateNumber(self, midpoint, key = 0):
