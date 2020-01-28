@@ -1,7 +1,7 @@
 import time
 from networktables import NetworkTables as nt
 
-nt.initialize(server="10.15.12.2")
+nt.initialize()
 
 table = nt.getTable("chooser_data")
 table2 = nt.getTable("tape_data")

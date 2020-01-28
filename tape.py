@@ -212,12 +212,11 @@ def main():
         if mid != 0:
             
             cv2.circle(threshed_frame, (mid[0], mid[1]), 5, (255, 255, 255), -1)
-            #table.updateNumber(mid)
+            table.updateNumber(mid, key=0)
             print("Midpoint:", mid)
         
-        #else:
-        
-            #table.updateNumber("B")
+        else:
+            table.updateNumber("B")
 
         
 
@@ -230,7 +229,7 @@ def main():
         cv2.imshow("frame", threshed_frame)
         cv2.imshow("original", frame2)
         
-        #connection(stop_message)
+        connection(stop_message)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
