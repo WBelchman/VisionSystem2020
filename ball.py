@@ -116,8 +116,8 @@ def main(stop_message, sem):
             
             output = grip.hsv_threshold_output
 
-            _, thresh = cv2.threshold(frame, 127 , 255, 0)
-            _, contours ,_ = cv2.findContours(thresh, 1, 2)
+            _, thresh = cv2.threshold(output, 127, 255, cv2.THRESH_BINARY)
+            _, contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             
             (x, y), radius = cv2.minEnclosingCircle(contours[0])
             
