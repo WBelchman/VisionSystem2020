@@ -113,6 +113,8 @@ def main(stop_message, sem):
         frame2 = frame
         try:
             grip.process(frame)
+            
+            output = grip.hsv_threshold_output
 
             _, thresh = cv2.threshold(frame, 127 , 255, 0)
             _, contours ,_ = cv.findContours(thresh, 1, 2)
@@ -120,10 +122,10 @@ def main(stop_message, sem):
             (x, y), radius = cv2.minEnclosingCircle(contours[0])
             
             
-            
             print("Center: {}\nRadius: {}".format((x,y), radius)
 
-            cv2.circle(frame, (x,y), radius, (0, 255, 0), 2)
+            cv2.circle(frame2, (x,y), radius, (0, 255, 0), 2)
+            cv2.circle(output, (x,y), radius, (0, 255, 0), 2)
             print("Ball found")
 
 #            table.updateNumber((sideX, sideY))
@@ -136,7 +138,8 @@ def main(stop_message, sem):
 #            table.updateNumber("B")
 #            table.updateNumber("B", key=1)
     
-        cv2.imshow(frame2)
+        cv2.imshow('Input', frame2)
+        cv2.imshow('Output', output)
 
         rawCap.truncate(0)
 
