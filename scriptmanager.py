@@ -2,7 +2,6 @@ import threading
 import time
 
 import ball
-import tape
 from networktables import NetworkTables as nt
 
 ip = "laptop"
@@ -13,21 +12,14 @@ table = nt.getTable("chooser_data")
 sem = threading.BoundedSemaphore(value=1)
 stop_message = [0]
 
-def start_tape():
-    tape.main(stop_message, sem)
-
 def start_ball():
     ball.main(stop_message, sem)
-
-def start_example():
-    thread_example.main(stop_message, sem)
 
 #Listens to networktable, runs when a value is changed
 def valueChanged(table, key, value, isNew):
     print("Value changed:", table, key, value)
     # 0 stops everything
-    # 1 stops everything but tape detector
-    # 2 stops everything but ball detector
+    # 1 stops everything but ball detector
     value = int(value)
     stop_message[0] = value
     
@@ -43,7 +35,7 @@ def valueChanged(table, key, value, isNew):
 def connectionListener(info, connected):
     print(info, "Connected:", connected)
 
-target_list=[0, start_tape, start_ball, start_example]
+target_list=[0, start_ball]
 
 nt.addConnectionListener(connectionListener)
 

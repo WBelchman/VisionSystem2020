@@ -83,7 +83,7 @@ class GripPipeline:
 BlurType = Enum('BlurType', 'Box_Blur Gaussian_Blur Median_Filter Bilateral_Filter')
 
 
-table = Table(1)
+table = Table()
 
 grip = GripPipeline()
 
@@ -108,8 +108,8 @@ def main(stop_message, sem):
 
         #print("[*]Thread 2 queue:", x)
 
-        if x != 2:
-            print("[*]Thread 2 exiting")
+        if x != 1:
+            print("[*]Ball thread exiting")
             cam.close()
             sem.release()
             sys.exit()
@@ -147,6 +147,7 @@ def main(stop_message, sem):
                 table.updateNumber("B", key=1)
                 
             else:
+                print("--------------")
                 print("Center: {}\nRadius: {}".format((x,y), radius))
                 print("Ball found")
 
