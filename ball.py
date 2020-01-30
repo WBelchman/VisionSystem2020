@@ -118,6 +118,8 @@ def main(stop_message, sem):
     cam.resolution = (640, 480)
     cam.framerate = 32
     rawCap = PiRGBArray(cam, size=(640, 480))
+    
+    min_radius = 40
 
     for frame in cam.capture_continuous(rawCap, format='bgr', use_video_port=True):
 
@@ -135,15 +137,23 @@ def main(stop_message, sem):
             x = int(x)
             y = int(y)
             radius = int(radius)
-            
-            if radius < 5:
-                raise Exception('')
-            
-            print("Center: {}\nRadius: {}".format((x,y), radius))
-            print("Ball found")
+        
+                
+            if radius < min_radius:
+                print("--------------")
+                print("Ball not found")
 
-            table.updateNumber((x, y), key=0)
-            table.updateNumber(radius, key=1)
+                table.updateNumber("B", key=0) #Ball not found values
+                table.updateNumber("B", key=1)
+                
+            else:
+                print("Center: {}\nRadius: {}".format((x,y), radius))
+                print("Ball found")
+
+                table.updateNumber((x, y), key=0)
+                table.updateNumber(radius, key=1)
+                
+            
         except Exception as e:
             print(e)
             print("--------------")
