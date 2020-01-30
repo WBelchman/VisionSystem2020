@@ -122,7 +122,6 @@ def main(stop_message, sem):
     for frame in cam.capture_continuous(rawCap, format='bgr', use_video_port=True):
 
         frame = frame.array
-        frame2 = frame
         try:
             grip.process(frame)
             
@@ -137,10 +136,10 @@ def main(stop_message, sem):
             y = int(y)
             radius = int(radius)
             
+            if radius < 5:
+                raise Exception('')
+            
             print("Center: {}\nRadius: {}".format((x,y), radius))
-
-            cv2.circle(frame2, (x,y), radius, (0, 255, 0), 2)
-            cv2.circle(output, (x,y), radius, (0, 255, 0), 2)
             print("Ball found")
 
             table.updateNumber((x, y), key=0)
@@ -150,11 +149,8 @@ def main(stop_message, sem):
             print("--------------")
             print("Ball not found")
 
-            table.updateNumber("B", key=0)
+            table.updateNumber("B", key=0) #Ball not found values
             table.updateNumber("B", key=1)
-    
-        cv2.imshow('Input', frame2)
-        cv2.imshow('Output', output)
 
         rawCap.truncate(0)
 
