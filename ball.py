@@ -131,8 +131,7 @@ def main(stop_message, sem):
             _, thresh = cv2.threshold(output, 127, 255, cv2.THRESH_BINARY)
             _, contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             
-            for cnt in contours:
-                x, y, radius = max_circle(contours)
+            x, y, radius = max_circle(contours)
             
             x = int(x)
             y = int(y)
