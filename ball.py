@@ -122,7 +122,7 @@ def main(stop_message, sem):
     for frame in cam.capture_continuous(rawCap, format='bgr', use_video_port=True):
 
         frame = frame.array
-        
+        frame2 = frame
         try:
             grip.process(frame)
             
@@ -152,6 +152,9 @@ def main(stop_message, sem):
 
             table.updateNumber("B", key=0)
             table.updateNumber("B", key=1)
+    
+        cv2.imshow('Input', frame2)
+        cv2.imshow('Output', output)
 
         rawCap.truncate(0)
 
