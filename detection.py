@@ -66,11 +66,11 @@ for frame in cam.capture_continuous(rawCap, format='bgr', use_video_port=True):
 
     frame = frame.array
 
-    thresh1 = ball_detect.thresh(frame)
-    thresh2 = ps_detect.thresh(frame)
+    filtered1 = ball_detect.thresh(frame)
+    filtered2 = ps_detect.thresh(frame)
     
-    _, thresh1 = cv2.threshold(thresh1, 127, 255, cv2.THRESH_BINARY)
-    _, thresh2 = cv2.threshold(thresh2, 127, 255, cv2.THRESH_BINARY)
+    _, thresh1 = cv2.threshold(filtered1, 127, 255, cv2.THRESH_BINARY)
+    _, thresh2 = cv2.threshold(filtered2, 127, 255, cv2.THRESH_BINARY)
     _, contours1, _ = cv2.findContours(thresh1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     _, contours2, _ = cv2.findContours(thresh2, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     
