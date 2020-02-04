@@ -10,12 +10,12 @@ class ballDetect():
     min_radius = 40
 
     def __init__(self):
-        self.pipline = BallPipe()
+        self.pipeline = BallPipe()
         self.nt_table = Table(0) #0 for ball table
 
     def thresh(self, frame):
-        self.pipline.process(frame)
-        return self.pipline.hsv_threshold_output
+        self.pipeline.process(frame)
+        return self.pipeline.hsv_threshold_output
 
     def find_ball(self, contours):
         if len(contours) is 0: return [0] * 3
@@ -43,11 +43,11 @@ class ballDetect():
 class psDetect():
 
     def __init__(self):
-        self.pipline = PsPipe()
+        self.pipeline = PsPipe()
         self.nt_table = Table(1) #1 for PowerStation
 
     def thresh(self, frame):
-        self.pipline.process(frame)
+        self.pipeline.process(frame)
         return self.pipeline.output
 
     def find_ps(self):
