@@ -1,6 +1,6 @@
 from networktables import NetworkTables as nt
 
-table_name = "ball_data"
+table_name = ["ball_data", "ps_data"]
 key_list = ["midpoint", "width"]
 
 class Table:
