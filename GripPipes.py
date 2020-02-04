@@ -78,7 +78,7 @@ BlurType = Enum('BlurType', 'Box_Blur Gaussian_Blur Median_Filter Bilateral_Filt
 
 class PsPipe():
     def __init__(self):
-        self.output = null
+        self.output = ''
 
     def process(self, frame):
         self.output = frame
