@@ -13,7 +13,7 @@ class ballDetect():
         self.pipline = BallPipe()
         self.nt_table = Table(0) #0 for ball table
 
-    def thresh(self, frame);
+    def thresh(self, frame):
         self.pipline.process(frame)
         return self.pipline.hsv_threshold_output
 
@@ -44,6 +44,7 @@ class psDetect():
 
     def __init__(self):
         self.pipline = PsPipe()
+        self.nt_table = Table(1) #1 for PowerStation
 
     def thresh(self, frame):
         self.pipline.process(frame)
