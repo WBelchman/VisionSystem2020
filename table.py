@@ -3,10 +3,11 @@ from networktables import NetworkTables as nt
 table_name = ["ball_data", "ps_data"]
 key_list = ["midpoint", "width"]
 
+nt.initialize(server="laptop")
+
 class Table:
     
     def __init__(self, table):
-        nt.initialize(server="laptop")
         self.table = nt.getTable(table_name[table])
 
     def updateNumber(self, midpoint, key = 0):
