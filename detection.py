@@ -32,7 +32,7 @@ class ballDetect():
 
     def update_table(self, output):
         if output[2] > self.min_radius:
-            self.nt_table.updateNumber(output[0:1], key=0) #midpoint
+            self.nt_table.updateNumber(output[0:2], key=0) #midpoint
             self.nt_table.updateNumber(output[2], key=1) #radius
 
         else:
