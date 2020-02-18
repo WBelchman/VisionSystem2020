@@ -1,6 +1,6 @@
 from networktables import NetworkTables as nt
 
-table_name = ["ball_data", "ps_data"]
+table_name = ["ball_data", "ps_data", "team_data"]
 key_list = ["midpoint", "width"]
 
 nt.initialize(server="laptop")

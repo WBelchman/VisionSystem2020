@@ -53,6 +53,13 @@ class psDetect():
     def find_ps(self):
         pass
 
+#Gets team color from networktables
+color_table = Table(2)
+team_color = color_table.getValue('team_color', None)
+
+while team_color is None:
+    team_color = color_table.getValue('team_color', None)
+
 
 cam = PiCamera()
 cam.resolution = (640, 480)
@@ -60,7 +67,7 @@ cam.framerate = 32
 rawCap = PiRGBArray(cam, size=(640, 480))
 
 ball_detect = ballDetect()
-ps_detect = psDetect()
+ps_detect = psDetect(team_color)
 
 for frame in cam.capture_continuous(rawCap, format='bgr', use_video_port=True):
 
