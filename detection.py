@@ -50,8 +50,13 @@ class psDetect():
         self.pipeline.process(frame)
         return self.pipeline.output
 
-    def find_ps(self):
-        pass
+    def find_ps(self, contours):
+        if len(contours) is 0: return [0] * 3
+
+        for cnt in [contours[0]]:
+            epsilon = 0.1 * cv2.arcLength(cnt, True)
+            approx = cv2.approxPolyDP(cnt, epsilon, True)
+
 
 #Gets team color from networktables
 color_table = Table(2)
